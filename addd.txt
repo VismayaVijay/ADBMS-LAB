@@ -1,0 +1,219 @@
+1ArmstrongumPLSQL.txt
+
+declare
+    n number:=407;
+    s number:=0;
+    r number;
+    len number;
+    m number;
+begin
+    m:=n;
+ 
+    len:=length(to_char(n));
+    
+    while n>0
+    loop
+        r:=mod(n,10);
+        s:=s+power(r,len);
+        n:=trunc(n/10);
+    end loop;
+    
+    if m=s
+    then
+        dbms_output.put_line('armstrong number');
+    else
+        dbms_output.put_line('not armstrong number');
+    end if;
+    
+end;
+/
+
+2FibonacciPLSQL.txt
+
+declare
+first number:=0;
+second number:=1;
+third number;
+n number:=5;
+i number;
+begin
+dbms_output.put_line('Fibonacci series is:');
+dbms_output.put_line(first);
+dbms_output.put_line(second);
+for i in 2..n
+loop
+third:=first+second;
+first:=second;
+second:=third;
+dbms_output.put_line(third);
+end loop;
+end;
+/
+
+3Sumof2numPLSQL.txt
+
+Declare
+x number(5);            
+y number(5);           
+z number(7);        
+begin
+x := 10;                
+y := 20;                
+z := x+y;                
+dbms_output.put_line('Sum is ' || z);
+end;
+/        
+
+4factPLSQL.txt
+
+declare
+n number;
+fac number:=1;
+i number;
+begin
+n:=5;
+for i in 1..n
+loop
+fac:=fac*i;
+end loop;
+dbms_output.put_line('factorial='||fac);
+end;
+/
+
+5minof3numPLSQL.tx
+
+DECLARE
+ a number;
+ b number;
+ c number;
+PROCEDURE findMin(x IN number, y IN number, z OUT number) IS
+BEGIN
+ IF x < y THEN
+ z:= x;
+ ELSE
+z:= y;
+ END IF;
+END; 
+BEGIN
+ a:= 23;
+ b:= 45;
+ findMin(a, b, c);
+ dbms_output.put_line(' Minimum of (23, 45) : ' || c);
+END;
+/
+
+6oddevenPLSQL.txt
+declare
+n number;
+begin
+n:=5;
+if mod(n,2)=0
+then
+dbms_output.put_line('number is even');
+else
+dbms_output.put_line('number is odd');
+end if;
+end;
+/
+
+
+
+8palindromePLSQL.txt
+declare
+    n number;
+    m number;
+    rev number:=0;
+    r number;
+begin
+    n:=12321;
+    m:=n;
+    while n>0
+    loop
+        r:=mod(n,10);
+        rev:=(rev*10)+r;
+        n:=trunc(n/10);
+    end loop;
+    
+    if m=rev
+    then
+        dbms_output.put_line('number is palindrome');
+    else
+        dbms_output.put_line('number is not palindrome');
+    end if;
+end;
+/
+
+9revPLSQL.txt
+
+
+declare
+n number;
+i number;
+rev number:=0;
+r number;
+begin
+n:=1234;
+while n>0
+loop
+r:=mod(n,10);
+rev:=(rev*10)+r;
+n:=trunc(n/10);
+end loop;
+dbms_output.put_line('reverse is '||rev);
+end;
+/
+
+10reversestrPLSQL.txt
+
+declare
+str1 varchar2(50):='&str';
+str2 varchar2(50);
+len number;
+i number;
+begin
+len:=length(str1);
+for i in reverse 1..len
+loop
+str2:=str2 || substr(str1,i,1);
+end loop;
+dbms_output.put_line('Reverse of String is:'||str2);
+end;
+/
+
+11squareofanumPLSQL.txt
+DECLARE
+ a number;
+PROCEDURE squareNum(x IN OUT number) IS
+BEGIN
+ x := x * x;
+END; 
+BEGIN
+ a:= 23;
+ squareNum(a);
+ dbms_output.put_line(' Square of (23): ' || a);
+END;
+/
+
+12swap2numPLSQL.txt
+
+declare
+    a number;
+    b number;
+    temp number;
+ 
+begin
+    a:=5;
+    b:=10;
+    
+    dbms_output.put_line('before swapping:');
+    dbms_output.put_line('a='||a||' b='||b);
+    
+    temp:=a;
+    a:=b;
+    b:=temp;
+    
+    dbms_output.put_line('after swapping:');
+    dbms_output.put_line('a='||a||' b='||b);
+    
+end;
+/
